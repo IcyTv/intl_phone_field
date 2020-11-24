@@ -141,7 +141,7 @@ class IntlPhoneField extends StatefulWidget {
 
   IntlPhoneField(
       {Key key,
-	    this.initialCountryCode,
+      this.initialCountryCode,
       this.obscureText = false,
       this.textAlign = TextAlign.left,
       this.onTap,
@@ -190,7 +190,9 @@ class IntlPhoneFieldState extends State<IntlPhoneField> {
   }
 
   void changeCountry(String isoCode) {
-    _selectedCountry = countries.firstWhere((element) => element["code"] == isoCode);
+    setState(() {
+      _selectedCountry = countries.firstWhere((element) => element["code"] == isoCode);
+    });
   }
 
   Future<void> _changeCountry() async {
