@@ -166,10 +166,10 @@ class IntlPhoneField extends StatefulWidget {
       this.textInputAction});
 
   @override
-  _IntlPhoneFieldState createState() => _IntlPhoneFieldState();
+  IntlPhoneFieldState createState() => IntlPhoneFieldState();
 }
 
-class _IntlPhoneFieldState extends State<IntlPhoneField> {
+class IntlPhoneFieldState extends State<IntlPhoneField> {
   Map<String, String> _selectedCountry =
       countries.firstWhere((item) => item['code'] == 'US');
   List<Map<String, String>> filteredCountries = countries;
