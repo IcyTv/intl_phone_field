@@ -5,6 +5,7 @@ import 'package:flutter/services.dart';
 
 import './countries.dart';
 import './phone_number.dart';
+import 'countries.dart';
 
 class IntlPhoneField extends StatefulWidget {
   final bool obscureText;
@@ -139,7 +140,8 @@ class IntlPhoneField extends StatefulWidget {
   TextInputAction textInputAction;
 
   IntlPhoneField(
-      {this.initialCountryCode,
+      {Key key,
+	    this.initialCountryCode,
       this.obscureText = false,
       this.textAlign = TextAlign.left,
       this.onTap,
@@ -163,7 +165,7 @@ class IntlPhoneField extends StatefulWidget {
       this.searchText = 'Search by Country Name',
       this.countryCodeTextColor,
       this.dropDownArrowColor,
-      this.textInputAction});
+      this.textInputAction}) : super(key: key);
 
   @override
   IntlPhoneFieldState createState() => IntlPhoneFieldState();
@@ -185,6 +187,10 @@ class IntlPhoneFieldState extends State<IntlPhoneField> {
     validator = widget.autoValidate
         ? (value) => value.length != 10 ? 'Invalid Mobile Number' : null
         : widget.validator;
+  }
+
+  void changeCountry(String isoCode) {
+    _selectedCountry = countries.firstWhere((element) => element["code"] == isoCode);
   }
 
   Future<void> _changeCountry() async {
